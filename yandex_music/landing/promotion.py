@@ -7,15 +7,36 @@ if TYPE_CHECKING:
 
 
 class Promotion(YandexMusicObject):
-    """Класс, представляющий .
+    """Класс, представляющий продвижение (рекламу).
+
+    Note:
+        В цвете может как оказаться HEX (`#6c65a9`), так и какой-нибудь `transparent`.
+
+        Ссылка со схемой отличается от просто ссылки наличием `yandexmusic://` в начале.
 
     Attributes:
-        client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+        promo_id (:obj:`str`): Уникальный идентификатор рекламы.
+        title (:obj:`str`): Заголовок.
+        subtitle (:obj:`str`): Подзаголовок.
+        heading (:obj:`str`): Верхний заголовок.
+        url (:obj:`str`): Ссылка.
+        url_scheme (:obj:`str`): Ссылка с схемой.
+        text_color (:obj:`str`): Цвет текста.
+        gradient (:obj:`str`): Градиент TODO.
+        image (:obj:`str`): Ссылка на рекламное изображение.
+        client (:obj:`yandex_music.Client`): Клиент Yandex Music.
 
     Args:
-        client (:obj:`yandex_music.Client`, optional): Объект класса :class:`yandex_music.Client`, представляющий клиент
-            Yandex Music.
+        promo_id (:obj:`str`): Уникальный идентификатор рекламы.
+        title (:obj:`str`): Заголовок.
+        subtitle (:obj:`str`): Подзаголовок.
+        heading (:obj:`str`): Верхний заголовок.
+        url (:obj:`str`): Ссылка.
+        url_scheme (:obj:`str`): Ссылка с схемой.
+        text_color (:obj:`str`): Цвет текста.
+        gradient (:obj:`str`): Градиент TODO.
+        image (:obj:`str`): Ссылка на рекламное изображение.
+        client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
         **kwargs: Произвольные ключевые аргументы полученные от API.
     """
 
@@ -51,11 +72,10 @@ class Promotion(YandexMusicObject):
 
         Args:
             data (:obj:`dict`): Поля и значения десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`yandex_music.Promotion`: Объект класса :class:`yandex_music.Promotion`.
+            :obj:`yandex_music.Promotion`: Продвижение (реклама).
         """
         if not data:
             return None
@@ -70,11 +90,10 @@ class Promotion(YandexMusicObject):
 
         Args:
             data (:obj:`list`): Список словарей с полями и значениями десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`list` из :obj:`yandex_music.Promotion`: Список объектов класса :class:`yandex_music.Promotion`.
+            :obj:`list` из :obj:`yandex_music.Promotion`: Продвижения (реклама).
         """
         if not data:
             return []

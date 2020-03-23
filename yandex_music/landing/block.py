@@ -7,15 +7,32 @@ if TYPE_CHECKING:
 
 
 class Block(YandexMusicObject):
-    """Класс, представляющий .
+    """Класс, представляющий блок лендинга.
+
+    Note:
+        Известные значения поля `type_`: `personal-playlists`, `play-contexts`.
 
     Attributes:
-        client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+        id_ (:obj:`str`): Уникальный идентификатор блока.
+        type_ (:obj:`str`): Тип блока.
+        type_for_from (:obj:`str`): Откуда получен блок (как к нему пришли).
+        title (:obj:`str`): Заголовок.
+        entities (:obj:`list` из :obj:`yandex_music.BlockEntity`): Содержимое блока (сущности, объекты).
+        description (:obj:`str` | :obj:`None`): Описание.
+        data (:obj:`yandex_music.PersonalPlaylistsData` | :obj:`yandex_music.PlayContextsData` | :obj:`None`):
+            Дополнительные данные.
+        client (:obj:`yandex_music.Client`): Клиент Yandex Music.
 
     Args:
-        client (:obj:`yandex_music.Client`, optional): Объект класса :class:`yandex_music.Client`, представляющий клиент
-            Yandex Music.
+        id_ (:obj:`str`): Уникальный идентификатор блока.
+        type_ (:obj:`str`): Тип блока.
+        type_for_from (:obj:`str`): Откуда получен блок (как к нему пришли).
+        title (:obj:`str`): Заголовок.
+        entities (:obj:`list` из :obj:`yandex_music.BlockEntity`): Содержимое блока (сущности, объекты).
+        description (:obj:`str`, optional): Описание.
+        data (:obj:`yandex_music.PersonalPlaylistsData` | :obj:`yandex_music.PlayContextsData`, optional):
+            Дополнительные данные.
+        client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
         **kwargs: Произвольные ключевые аргументы полученные от API.
     """
 
@@ -51,11 +68,10 @@ class Block(YandexMusicObject):
 
         Args:
             data (:obj:`dict`): Поля и значения десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`yandex_music.Block`: Объект класса :class:`yandex_music.Block`.
+            :obj:`yandex_music.Block`: Блок лендинга.
         """
         if not data:
             return None
@@ -78,11 +94,10 @@ class Block(YandexMusicObject):
 
         Args:
             data (:obj:`list`): Список словарей с полями и значениями десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`list` из :obj:`yandex_music.Block`: Список объектов класса :class:`yandex_music.Block`.
+            :obj:`list` из :obj:`yandex_music.Block`: Блоки лендинга.
         """
         if not data:
             return []

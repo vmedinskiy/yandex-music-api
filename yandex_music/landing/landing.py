@@ -7,15 +7,19 @@ if TYPE_CHECKING:
 
 
 class Landing(YandexMusicObject):
-    """Класс, представляющий .
+    """Класс, представляющий лендинг.
 
     Attributes:
-        client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+        pumpkin (:obj:`bool`): Хэллоуин.
+        content_id (:obj:`str` | :obj:`int`): Уникальный идентификатор контента.
+        blocks (:obj:`list` из :obj:`yandex_music.Block): Блоки лендинга.
+        client (:obj:`yandex_music.Client`): Клиент Yandex Music.
 
     Args:
-        client (:obj:`yandex_music.Client`, optional): Объект класса :class:`yandex_music.Client`, представляющий клиент
-            Yandex Music.
+        pumpkin (:obj:`bool`): Хэллоуин.
+        content_id (:obj:`str` | :obj:`int`): Уникальный идентификатор контента.
+        blocks (:obj:`list` из :obj:`yandex_music.Block): Блоки лендинга.
+        client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
         **kwargs: Произвольные ключевые аргументы полученные от API.
     """
 
@@ -42,11 +46,10 @@ class Landing(YandexMusicObject):
 
         Args:
             data (:obj:`dict`): Поля и значения десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`yandex_music.Landing`: Объект класса :class:`yandex_music.Landing`.
+            :obj:`yandex_music.Landing`: Лендинг.
         """
         if not data:
             return None

@@ -7,15 +7,21 @@ if TYPE_CHECKING:
 
 
 class StationTracksResult(YandexMusicObject):
-    """Класс, представляющий .
+    """Класс, представляющий последовательность треков станции.
 
     Attributes:
-        client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+        id_ (:obj:`yandex_music.Id` | :obj:`None`): Уникальный идентификатор станции.
+        sequence (:obj:`list` из :obj:`yandex_music.Sequence`): Последовательность треков.
+        batch_id (:obj:`str`): Уникальный идентификатор партии (последовательности).
+        pumpkin (:obj:`bool`): Хэллоуин.
+        client (:obj:`yandex_music.Client`): Клиент Yandex Music.
 
     Args:
-        client (:obj:`yandex_music.Client`, optional): Объект класса :class:`yandex_music.Client`, представляющий клиент
-            Yandex Music.
+        id_ (:obj:`yandex_music.Id`): Уникальный идентификатор станции.
+        sequence (:obj:`list` из :obj:`yandex_music.Sequence`): Последовательность треков.
+        batch_id (:obj:`str`): Уникальный идентификатор партии (последовательности).
+        pumpkin (:obj:`bool`): Хэллоуин.
+        client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
         **kwargs: Произвольные ключевые аргументы полученные от API.
     """
 
@@ -40,11 +46,10 @@ class StationTracksResult(YandexMusicObject):
 
         Args:
             data (:obj:`dict`): Поля и значения десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`yandex_music.StationTracksResult`: Объект класса :class:`yandex_music.StationTracksResult`.
+            :obj:`yandex_music.StationTracksResult`: Последовательность треков станции.
         """
         if not data:
             return None

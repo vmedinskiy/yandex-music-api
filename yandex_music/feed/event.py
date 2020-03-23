@@ -7,15 +7,43 @@ if TYPE_CHECKING:
 
 
 class Event(YandexMusicObject):
-    """Класс, представляющий .
+    """Класс, представляющий событие фида.
+
+    Note:
+        Известные значения поля `type_`: `tracks`, `artists`, `albums`, `notification`.
+
+        Поле `message` заполнено только когда `type` равен `notification`.
+
+        Примером значения поля `type_for_from` может служить `recommended-similar-artists`.
+
+        Наличие данных в `tracks`, `albums`, `artists` напрямую зависит от `type_`.
 
     Attributes:
-        client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+        id_ (:obj:`str`): Уникальный идентификатор события.
+        type_ (:obj:`str`): Тип события.
+        type_for_from (:obj:`str`): Откуда пришло событие.
+        title (:obj:`str`): Заголовок.
+        tracks (:obj:`list` из :obj:`yandex_music.Track`): Список треков.
+        artists (:obj:`list` из :obj:`yandex_music.ArtistEvent`): Список артистов с похожими и популярными треками.
+        albums (:obj:`list` из :obj:`yandex_music.AlbumEvent`): Список альбомов с треками.
+        message (:obj:`str`): Сообщение уведомления.
+        device (:obj:`str`): Устройство, с которого пришло уведомление.
+        tracks_count (:obj:`int`): Количество треков (возможно, уже не используется).
+        client (:obj:`yandex_music.Client`): Клиент Yandex Music.
 
     Args:
-        client (:obj:`yandex_music.Client`, optional): Объект класса :class:`yandex_music.Client`, представляющий клиент
-            Yandex Music.
+        id_ (:obj:`str`): Уникальный идентификатор события.
+        type_ (:obj:`str`): Тип события.
+        type_for_from (:obj:`str`, optional): Откуда пришло событие.
+        title (:obj:`str`, optional): Заголовок.
+        tracks (:obj:`list` из :obj:`yandex_music.Track`, optional): Список треков.
+        artists (:obj:`list` из :obj:`yandex_music.ArtistEvent`, optional): Список артистов с похожими и популярными
+            треками.
+        albums (:obj:`list` из :obj:`yandex_music.AlbumEvent`, optional): Список альбомов с треками.
+        message (:obj:`str`, optional): Сообщение уведомления.
+        device (:obj:`str`, optional): Устройство, с которого пришло уведомление.
+        tracks_count (:obj:`int`, optional): Количество треков (возможно, уже не используется).
+        client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
         **kwargs: Произвольные ключевые аргументы полученные от API.
     """
 
@@ -53,11 +81,10 @@ class Event(YandexMusicObject):
 
         Args:
             data (:obj:`dict`): Поля и значения десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`yandex_music.Event`: Объект класса :class:`yandex_music.Event`.
+            :obj:`yandex_music.Event`: Событие фида.
         """
         if not data:
             return None
@@ -76,11 +103,10 @@ class Event(YandexMusicObject):
 
         Args:
             data (:obj:`list`): Список словарей с полями и значениями десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`list` из :obj:`yandex_music.Event`: Список объектов класса :class:`yandex_music.Event`.
+            :obj:`list` из :obj:`yandex_music.Event`: События фида.
         """
         if not data:
             return []

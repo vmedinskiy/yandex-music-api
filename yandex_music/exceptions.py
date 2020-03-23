@@ -36,13 +36,11 @@ class Captcha(YandexMusicError):
     """Базовый класс, представляющий исключение связанное с капчей.
 
     Attributes:
-        captcha (:obj:`yandex_music.utils.captcha_response.CaptchaResponse`): Объект класса
-            :class:`yandex_music.utils.captcha_response.CaptchaResponse` представляющий капчу.
+        captcha (:obj:`yandex_music.utils.captcha_response.CaptchaResponse`): Капча.
 
     Args:
         msg (:obj:`str`): Сообщение с ошибкой.
-        captcha (:obj:`yandex_music.utils.captcha_response.CaptchaResponse`): Объект класса
-            :class:`yandex_music.utils.captcha_response.CaptchaResponse` представляющий капчу.
+        captcha (:obj:`yandex_music.utils.captcha_response.CaptchaResponse`): Капча.
     """
 
     def __init__(self, msg: str, captcha: 'CaptchaResponse', *args, **kwargs):
@@ -73,6 +71,8 @@ class NetworkError(YandexMusicError):
 
 
 class BadRequest(NetworkError):
+    """Класс исключения, вызываемый в случае отправки неправильного запроса.
+    """
     pass
 
 

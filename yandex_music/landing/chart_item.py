@@ -7,15 +7,17 @@ if TYPE_CHECKING:
 
 
 class ChartItem(YandexMusicObject):
-    """Класс, представляющий .
+    """Класс, представляющий трек в чарте.
 
     Attributes:
-        client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+        track (:obj:`yandex_music.Track` | :obj:`None`): Трек.
+        chart (:obj:`yandex_music.Chart` | :obj:`None`): Элемент чарта.
+        client (:obj:`yandex_music.Client`): Клиент Yandex Music.
 
     Args:
-        client (:obj:`yandex_music.Client`, optional): Объект класса :class:`yandex_music.Client`, представляющий клиент
-            Yandex Music.
+        track (:obj:`yandex_music.Track` | :obj:`None`): Трек.
+        chart (:obj:`yandex_music.Chart` | :obj:`None`): Элемент чарт.
+        client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
         **kwargs: Произвольные ключевые аргументы полученные от API.
     """
 
@@ -36,11 +38,10 @@ class ChartItem(YandexMusicObject):
 
         Args:
             data (:obj:`dict`): Поля и значения десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`yandex_music.ChartItem`: Объект класса :class:`yandex_music.ChartItem`.
+            :obj:`yandex_music.ChartItem`: Трек в чарте.
         """
         if not data:
             return None
@@ -58,11 +59,10 @@ class ChartItem(YandexMusicObject):
 
         Args:
             data (:obj:`list`): Список словарей с полями и значениями десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`list` из :obj:`yandex_music.ChartItem`: Список объектов класса :class:`yandex_music.ChartItem`.
+            :obj:`list` из :obj:`yandex_music.ChartItem`: Треки в чартах.
         """
         if not data:
             return []

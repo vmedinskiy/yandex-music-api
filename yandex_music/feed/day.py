@@ -7,15 +7,21 @@ if TYPE_CHECKING:
 
 
 class Day(YandexMusicObject):
-    """Класс, представляющий .
+    """Класс, представляющий день в фиде.
 
     Attributes:
-        client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+        day (:obj:`str`): Дата в формате YYYY-MM-DD.
+        events (:obj:`list` из :obj:`yandex_music.Event`): События TODO.
+        tracks_to_play_with_ads (:obj:`list` из :obj:`yandex_music.TrackWithAds`): Треки для проигрывания с рекламой.
+        tracks_to_play (:obj:`list` из :obj:`yandex_music.Track`): Треки для проигрывания.
+        client (:obj:`yandex_music.Client`): Клиент Yandex Music.
 
     Args:
-        client (:obj:`yandex_music.Client`, optional): Объект класса :class:`yandex_music.Client`, представляющий клиент
-            Yandex Music.
+        day (:obj:`str`): Дата в формате YYYY-MM-DD.
+        events (:obj:`list` из :obj:`yandex_music.Event`): События TODO.
+        tracks_to_play_with_ads (:obj:`list` из :obj:`yandex_music.TrackWithAds`): Треки для проигрывания с рекламой.
+        tracks_to_play (:obj:`list` из :obj:`yandex_music.Track`): Треки для проигрывания.
+        client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
         **kwargs: Произвольные ключевые аргументы полученные от API.
     """
 
@@ -40,11 +46,10 @@ class Day(YandexMusicObject):
 
         Args:
             data (:obj:`dict`): Поля и значения десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`yandex_music.Day`: Объект класса :class:`yandex_music.Day`.
+            :obj:`yandex_music.Day`: День в фиде.
         """
         if not data:
             return None
@@ -63,11 +68,10 @@ class Day(YandexMusicObject):
 
         Args:
             data (:obj:`list`): Список словарей с полями и значениями десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`list` из :obj:`yandex_music.Day`: Список объектов класса :class:`yandex_music.Day`.
+            :obj:`list` из :obj:`yandex_music.Day`: Дни в фиде.
         """
         if not data:
             return []

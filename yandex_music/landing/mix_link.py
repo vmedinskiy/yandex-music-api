@@ -7,15 +7,32 @@ if TYPE_CHECKING:
 
 
 class MixLink(YandexMusicObject):
-    """Класс, представляющий .
+    """Класс, представляющий ссылку (кликабельный блок) на подборку.
+
+    Note:
+        В цветах может как оказаться HEX (`#6c65a9`), так и какой-нибудь `transparent`.
+
+        Ссылка со схемой отличается от просто ссылки наличием `yandexmusic://` в начале.
 
     Attributes:
-        client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+        title (:obj:`str`): Заголовок ссылки.
+        url (:obj:`str`): Ссылка на подборку.
+        url_scheme (:obj:`str`): Ссылка со схемой на подборку.
+        text_color (:obj:`str`): Цвет текста (HEX).
+        background_color (:obj:`str`): Цвет заднего фона.
+        background_image_uri (:obj:`str`): Ссылка на изображение заднего фона.
+        cover_white (:obj:`str`): Ссылка на изображение с обложкой TODO.
+        client (:obj:`yandex_music.Client`): Клиент Yandex Music.
 
     Args:
-        client (:obj:`yandex_music.Client`, optional): Объект класса :class:`yandex_music.Client`, представляющий клиент
-            Yandex Music.
+        title (:obj:`str`): Заголовок ссылки.
+        url (:obj:`str`): Ссылка на подборку.
+        url_scheme (:obj:`str`): Ссылка со схемой на подборку.
+        text_color (:obj:`str`): Цвет текста (HEX).
+        background_color (:obj:`str`): Цвет заднего фона.
+        background_image_uri (:obj:`str`): Ссылка на изображение заднего фона.
+        cover_white (:obj:`str`): Ссылка на изображение с обложкой TODO.
+        client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
         **kwargs: Произвольные ключевые аргументы полученные от API.
     """
 
@@ -56,11 +73,10 @@ class MixLink(YandexMusicObject):
 
         Args:
             data (:obj:`dict`): Поля и значения десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`yandex_music.MixLink`: Объект класса :class:`yandex_music.MixLink`.
+            :obj:`yandex_music.MixLink`: Блок-ссылка на подборку.
         """
         if not data:
             return None
@@ -75,11 +91,10 @@ class MixLink(YandexMusicObject):
 
         Args:
             data (:obj:`list`): Список словарей с полями и значениями десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`list` из :obj:`yandex_music.MixLink`: Список объектов класса :class:`yandex_music.MixLink`.
+            :obj:`list` из :obj:`yandex_music.MixLink`: Блоки-ссылки на подборки.
         """
         if not data:
             return []

@@ -7,15 +7,17 @@ if TYPE_CHECKING:
 
 
 class TrackId(YandexMusicObject):
-    """Класс, представляющий .
+    """Класс, представляющий уникальный идентификатор трека.
 
     Attributes:
-        client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+        id_ (:obj:`int`): Уникальный идентификатор трека.
+        album_id (:obj:`int`): Уникальный идентификатор альбома.
+        client (:obj:`yandex_music.Client`): Клиент Yandex Music.
 
     Args:
-        client (:obj:`yandex_music.Client`, optional): Объект класса :class:`yandex_music.Client`, представляющий клиент
-            Yandex Music.
+        id_ (:obj:`int`): Уникальный идентификатор трека.
+        album_id (:obj:`int`, optional): Уникальный идентификатор альбома.
+        client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
         **kwargs: Произвольные ключевые аргументы полученные от API.
     """
 
@@ -36,11 +38,10 @@ class TrackId(YandexMusicObject):
 
         Args:
             data (:obj:`dict`): Поля и значения десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`yandex_music.TrackId`: Объект класса :class:`yandex_music.TrackId`.
+            :obj:`yandex_music.TrackId`: Уникальный идентификатор трека.
         """
         if not data:
             return None

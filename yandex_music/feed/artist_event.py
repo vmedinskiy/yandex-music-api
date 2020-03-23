@@ -7,15 +7,19 @@ if TYPE_CHECKING:
 
 
 class ArtistEvent(YandexMusicObject):
-    """Класс, представляющий .
+    """Класс, представляющий артиста в событии фида.
 
     Attributes:
-        client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+        artist (:obj:`yandex_music.Artist` | :obj:`None`): Артист.
+        tracks (:obj:`list` :obj:`yandex_music.Track`): Треки.
+        similar_to_artists_from_history (:obj:`list` :obj:`yandex_music.Artist`): Похожие артисты из истории.
+        client (:obj:`yandex_music.Client`): Клиент Yandex Music.
 
     Args:
-        client (:obj:`yandex_music.Client`, optional): Объект класса :class:`yandex_music.Client`, представляющий клиент
-            Yandex Music.
+        artist (:obj:`yandex_music.Artist` | :obj:`None`): Артист.
+        tracks (:obj:`list` :obj:`yandex_music.Track`): Треки.
+        similar_to_artists_from_history (:obj:`list` :obj:`yandex_music.Artist`): Похожие артисты из истории.
+        client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
         **kwargs: Произвольные ключевые аргументы полученные от API.
     """
 
@@ -38,11 +42,10 @@ class ArtistEvent(YandexMusicObject):
 
         Args:
             data (:obj:`dict`): Поля и значения десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`yandex_music.ArtistEvent`: Объект класса :class:`yandex_music.ArtistEvent`.
+            :obj:`yandex_music.ArtistEvent`: Артист из события фида.
         """
         if not data:
             return None
@@ -61,11 +64,10 @@ class ArtistEvent(YandexMusicObject):
 
         Args:
             data (:obj:`list`): Список словарей с полями и значениями десериализуемого объекта.
-            client (:obj:`yandex_music.Client`): Объект класса :class:`yandex_music.Client`, представляющий клиент
-                Yandex Music.
+            client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
 
         Returns:
-            :obj:`list` из :obj:`yandex_music.ArtistEvent`: Список объектов класса :class:`yandex_music.ArtistEvent`.
+            :obj:`list` из :obj:`yandex_music.ArtistEvent`: Артисты из события фида.
         """
         if not data:
             return []
