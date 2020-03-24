@@ -15,27 +15,29 @@ class Description(YandexMusicObject):
 
     Attributes:
         text (:obj:`str`): Описание исполнителя.
-        url (:obj:`str`): Ссылка на источник.
+        uri (:obj:`str`): Ссылка на источник.
         client (:obj:`yandex_music.Client`): Клиент Yandex Music.
 
     Args:
         text (:obj:`str`): Описание исполнителя.
-        url (:obj:`str`): Ссылка на источник.
+        uri (:obj:`str`): Ссылка на источник.
         client (:obj:`yandex_music.Client`, optional): Клиент Yandex Music.
         **kwargs: Произвольные ключевые аргументы полученные от API.
     """
 
     def __init__(self,
                  text: str,
-                 url: Optional[str] = None, # возможно, вообще параметр должен всегда называться uri
-                 uri: Optional[str] = None,
+                 uri: str,
                  client: Optional['Client'] = None,
                  **kwargs) -> None:
+        super().handle_unknown_kwargs(self, **kwargs)
+
         self.text = text
-        self.url = url if url else uri if uri else ''
+
+        self.uri = uri
 
         self.client = client
-        self._id_attrs = (self.text, self.url)
+        self._id_attrs = (self.text, self.uri)
 
     @classmethod
     def de_json(cls, data: dict, client: 'Client') -> Optional['Description']:
