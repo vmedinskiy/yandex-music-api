@@ -30,19 +30,19 @@ with open('CHANGES.rst', 'r', encoding='utf-8') as f:
 
 
 setup(name='yandex-music',
-      version='0.0.16',
+      version='0.1.1',
       author='Il`ya Semyonov',
       author_email='Ilya@marshal.by',
       license='LGPLv3',
       url='https://github.com/MarshalX/yandex-music-api/',
-      keywords='python yandex music api wrapper library питон яндекс музыка апи обёртка библиотека',
+      keywords='python yandex music api wrapper library питон пайтон яндекс музыка апи обёртка библиотека',
       description='Делаю то, что по определённым причинам не сделала компания Yandex.',
       long_description=f'{readme}\n{changes}',
       packages=packages,
       install_requires=requirements('default'),
       include_package_data=True,
       classifiers=[
-          'Development Status :: 2 - Pre-Alpha',
+          'Development Status :: 3 - Alpha',
           'Natural Language :: Russian',
           'Intended Audience :: Developers',
           'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
